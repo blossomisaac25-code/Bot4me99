@@ -1618,7 +1618,7 @@ async function startBot() {
       const ownerJid = normalizeJid(BOT_OWNER);
       await sock.sendMessage(ownerJid, {
         text: `╭━━━━━━━━━━━━━━━━━╮
-┃  🤖 *LUCA BOT v1.0* 🤖
+┃  🤖 *SILVER BOT v1.0* 👻
 ╰━━━━━━━━━━━━━━━━━╯
 
 ✅ *Status:* Connected Successfully!
