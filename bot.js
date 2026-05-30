@@ -1467,8 +1467,8 @@ const formatUptime = () => {
 };
 
 const getMenu = () => `
- 🤍 *L-U-C-A* 🤍
- _Built By TheIdleDeveloper_
+ *$ILVER-BOT* 👻
+ Made by SILVER 
 
 ┌─────────────────────
 │ ◌ Owner: ${BOT_OWNER || 'Unknown'}
