@@ -1647,8 +1647,8 @@ _Powered by The Idle Developer_ 🚀`,
           image: successImage,
           caption: `CONNECTION SUCCESSFUL
 
-L-U-C-A Bot is online!
-Built by: TheIdleDeveloper
+SILVER Bot is online!
+Built by: SILVER
 
 Quick Start:
 .menu - View all commands
