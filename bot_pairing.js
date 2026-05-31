@@ -1,4 +1,4 @@
-const phoneNumber = process.env.PHONE_NUMBER;
+const BOT_OWNER = process.env.OWNER_NUMBER;
 
       try {
         // Set pairing phone number as bot owner if not already set
