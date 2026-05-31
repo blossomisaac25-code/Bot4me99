@@ -6,7 +6,7 @@
   downloadMediaMessage,
   downloadContentFromMessage,
 } = require("@whiskeysockets/baileys");
-const readline = require("readline");
+
 const pino = require("pino");
 const fs = require("fs");
 const path = require("path");
