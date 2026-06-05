@@ -2602,7 +2602,6 @@ console.log('MESSAGE TYPE:', Object.keys(message.message || {}));
     contextInfo?.remoteJid === 'status@broadcast' ||
     msg?.groupStatusMentionMessage ||
     msg?.statusMentionMessage ||
-    msg?.protocolMessage ||
     msg?.imageMessage?.contextInfo?.remoteJid === 'status@broadcast' ||
     msg?.videoMessage?.contextInfo?.remoteJid === 'status@broadcast' ||
     msg?.extendedTextMessage?.contextInfo?.remoteJid === 'status@broadcast' ||
