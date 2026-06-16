@@ -2098,47 +2098,7 @@ antiDelMsg += `🆔 *User:* ${senderNumber}\n`;
   sock.ev.on("messages.upsert", async (m) => {
     try {
       const message = m.messages[0];
-      // ==================== AUTO STATUS VIEW + ❤️ REACT ====================
-try {
-    if (message?.key?.remoteJid === "status@broadcast") {
-
-        // View status immediately
-        await sock.readMessages([message.key]);
-
-        logger.info({
-            sender: message.key.participant || "unknown"
-        }, "Status viewed");
-
-        // Wait 5 seconds before reacting
-        setTimeout(async () => {
-            try {
-                await sock.sendMessage(
-                    "status@broadcast",
-                    {
-                        react: {
-                            text: "❤️",
-                            key: message.key
-                        }
-                    }
-                );
-
-                logger.info({
-                    sender: message.key.participant || "unknown"
-                }, "Status reacted ❤️");
-
-            } catch (err) {
-                logger.error({
-                    error: err.message
-                }, "Status reaction failed");
-            }
-        }, 5000);
-    }
-} catch (err) {
-    logger.error({
-        error: err.message
-    }, "Auto status handler failed");
-}
-// ================================================================
+      
       if (!message.message) return;
 
       const isGroup = message.key.remoteJid.endsWith("@g.us");
@@ -2188,7 +2148,7 @@ try {
       }
 
       // Ignore bot's own "." messages (used for hidetag)
-      if (message.key.fromMe && text === ":") {
+      if (message.key.fromMe && text === ".") {
         return;
       }
 
@@ -2804,11 +2764,11 @@ console.log('MESSAGE TYPE:', Object.keys(message.message || {}));
 
         // Non-command group messages should return after anti-* enforcement
         // But allow sticker messages through for sticker command detection
-        if ((!text || !text.startsWith(':')) && !hasStickerMessage) return;
+        if ((!text || !text.startsWith('.')) && !hasStickerMessage) return;
 
         // Silent return for non-authorized users in private mode
         // Allow ONLY owner/sudo to use commands when in private mode
-        if (!canUseBot && text && text.startsWith(":")) {
+        if (!canUseBot && text && text.startsWith(".")) {
           logger.debug({ command, sender, botMode }, 'Non-owner attempted command in private mode - ignoring');
           return;
         }
