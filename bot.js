@@ -2176,16 +2176,6 @@ try {
   message: message.message,
   isGroup: isGroup
 };
-        console.log("CACHE DEBUG:", {
-    sender,
-    senderName: message.pushName,
-    participant: message.key?.participant,
-    remoteJid: message.key?.remoteJid,
-    remoteJidAlt: message.key?.remoteJidAlt,
-    fromMe: message.key?.fromMe
-});
-
-      console.log("CACHE DEBUG FULL:", JSON.stringify(message.key, null, 2));
         
         // Store in cache
         messageCache.set(messageId, cacheData);
@@ -2198,7 +2188,7 @@ try {
       }
 
       // Ignore bot's own "." messages (used for hidetag)
-      if (message.key.fromMe && text === ".") {
+      if (message.key.fromMe && text === ":") {
         return;
       }
 
@@ -2270,12 +2260,7 @@ try {
         }
       }
 
-      // ============================================
-// STRICT PRIVATE MODE GUARD
-// ============================================
-if (botMode === "private" && !isOwner && !isSudo) {
-  return; // Completely ignore the message. No responses, no errors, total silence.
-}
+      
       // Sudo users can use bot like owner (except sudo management commands)
       const canUseAsOwner = isOwner || isSudo;
 
@@ -2819,11 +2804,11 @@ console.log('MESSAGE TYPE:', Object.keys(message.message || {}));
 
         // Non-command group messages should return after anti-* enforcement
         // But allow sticker messages through for sticker command detection
-        if ((!text || !text.startsWith('.')) && !hasStickerMessage) return;
+        if ((!text || !text.startsWith(':')) && !hasStickerMessage) return;
 
         // Silent return for non-authorized users in private mode
         // Allow ONLY owner/sudo to use commands when in private mode
-        if (!canUseBot && text && text.startsWith(".")) {
+        if (!canUseBot && text && text.startsWith(":")) {
           logger.debug({ command, sender, botMode }, 'Non-owner attempted command in private mode - ignoring');
           return;
         }
